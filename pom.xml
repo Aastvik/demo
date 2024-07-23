@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.3.2</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
 	<groupId>io.github.aastvik</groupId>
 	<artifactId>demo</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>Demo project for Spring Boot</description>
@@ -25,7 +26,7 @@
 
 	<developers>
 		<developer>
-		<name>Aastvik Goel</name>
+		<name>Aastvik</name>
 		<email>aastvikgoel68.com</email>
 		<organization>Indivisual</organization>
 		<organizationUrl>https://github.com/Aastvik</organizationUrl>
@@ -36,8 +37,7 @@
 	<connection>scm:git:git://github.com/Aastvik/demo.git</connection>
 	<developerConnection>scm:git:ssh://github.com:Aastvik/demo.git</developerConnection>
 	<url>http://github.com/Aastvik/demo/tree/main</url>
-	  <tag>demo-0.0.1</tag>
-  </scm>
+	</scm>
 
 	<properties>
 		<java.version>21</java.version>
@@ -97,29 +97,29 @@
 				<publishingServerId>central</publishingServerId>
 			</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+					<id>sign-artifacts</id>
+					<phase>verify</phase>
+					<goals>
+						<goal>sign</goal>
+					</goals>
+					<configuration>
+					<keyname>${gpg.keyname}</keyname>
+					<passphraseServerId>${gpg.keyname}</passphraseServerId>
+					<gpgArguments>
+						<arg>--pinentry-mode</arg>
+						<arg>loopback</arg>
+					</gpgArguments>
+					</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
-	<profiles>
-		<profile>
-			<id>sign-artifacts</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.5</version>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
+
 </project>
